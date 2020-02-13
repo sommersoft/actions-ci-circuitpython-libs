@@ -13,12 +13,12 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 CWD=$( pwd )
-CONTENTS=$( ls -a )
+CONTENTS=$( ls -a | tr '\n' ' ' )
 
 # Get the pylint_version from .pylintrc
 PYLINT_VERSION=$(cat .pylintrc | awk '/\#\spylint_version:\s(.*)/ { print $3 }' )
 if [[ ! $PYLINT_VERSION ]]; then
-    PYLINT_VERSION="1.9.2"
+    PYLINT_VERSION="2.4.4"
 fi
 
 echo "Current working directory is: $CWD"
