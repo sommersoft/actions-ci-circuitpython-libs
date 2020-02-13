@@ -13,6 +13,7 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 echo `pwd`
+echo `ls -a`
 
 # Install dependencies
 sudo apt-get update
