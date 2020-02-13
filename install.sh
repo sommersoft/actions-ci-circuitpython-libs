@@ -15,10 +15,15 @@ fi
 echo `pwd`
 echo `ls -a`
 
+# Get the pylint_version from .pylintrc
+
+PYLINT_VERSION=$(cat .pylintrc | awk '/\#\spylint_version:\s(.*)/ { print $3 }' )
+echo "Pylint version is: $PYLINT_VERSION"
+
 # Install dependencies
 sudo apt-get update
 sudo apt-get install libudev-dev libusb-1.0
 sudo apt-get install -y gettext
-pip install -r requirements.txt
 pip install circuitpython-build-tools Sphinx sphinx-rtd-theme
-pip install --force-reinstall pylint==1.9.2 black==19.10b0
+pip install --force-reinstall pylint==$PYLINT_VERSION black==19.10b0
+pip install -r requirements.txt
